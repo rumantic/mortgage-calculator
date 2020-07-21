@@ -1,6 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, registerLocaleData} from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+registerLocaleData(localeRu, 'ru');
+
 
 @Component({
   selector: 'app-root',
@@ -86,14 +89,12 @@ export class AppComponent implements OnInit {
 
     this.controlPressed = false;
     this.controlProcessing = true;
-    this.init_input_parameters();
-
-
-    this.calculate(null);
 
   }
 
   ngOnInit() {
+    this.init_input_parameters();
+    this.calculate(null);
   }
 
 

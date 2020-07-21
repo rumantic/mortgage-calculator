@@ -300,10 +300,9 @@
 </div>
 
 <div class="content" role="main">
-  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
   <div id="mortgage-calculator">
-    <div fxLayout="row" fxLayoutAlign="center start">
-      <section class="example-section">
+    <div fxLayout="column" fxLayoutAlign="center start">
+      <section fxFlex="100" class="example-section">
         <mat-form-field class="example-margin">
           <input matInput type="number" placeholder="Стоимость квартиры" [(ngModel)]="realty_price" (ngModelChange)="calculate($event)">
           <!--span matPrefix>руб&nbsp;</span-->
@@ -325,7 +324,7 @@
 
         </mat-form-field>
       </section>
-      <mat-form-field class="example-margin">
+      <mat-form-field   class="example-margin">
         <input matInput type="number" placeholder="Первоначальный взнос {{down_percent}}% *" [(ngModel)]="down_payment" (ngModelChange)="calculate($event)">
         <span matSuffix>&nbsp;руб</span>
         <mat-slider
@@ -345,7 +344,7 @@
         <div><span class="font-size-10">* возможно без первоначального взноса</span></div>
 
       </mat-form-field>
-      <mat-form-field class="example-margin">
+      <mat-form-field   class="example-margin">
         <input matInput type="number" placeholder="{{stavka_title}}" [(ngModel)]="percent">
         <span matSuffix>&nbsp;%</span>
         <mat-slider

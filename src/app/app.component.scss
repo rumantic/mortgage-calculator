@@ -1,0 +1,55 @@
+#mortgage-calculator {
+  min-width: 270px;
+  width: 100%;
+  background-color: white;
+}
+.example-h2 {
+}
+
+.example-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-slider-horizontal {
+  width: 100%;
+}
+
+.mat-slider-vertical {
+  height: 300px;
+}
+::ng-deep .mat-accent .mat-slider-thumb-label {
+  width: 70px !important;
+  height: 70px !important;
+  top: -85px !important;
+  right: -33px !important;
+}
+
+::ng-deep .mat-slider-horizontal .mat-slider-thumb-label {
+
+}
+.error_content {
+  padding: 10px;
+}
+.order_button_div {
+  padding-top: 10px;
+}
+.example-margin {
+  border: 0px;
+  width: 250px;
+  padding: 40px;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+
+::ng-deep {
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+  mat-form-field {
+    .mat-hint, input, ::placeholder, .mat-form-field-label {
+      color: white;
+    }
+  }
+}

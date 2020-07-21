@@ -7,7 +7,9 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {Ng5SliderModule} from 'ng5-slider';
 
 
 @NgModule({
@@ -22,6 +24,10 @@ import {FormsModule} from '@angular/forms';
     MatMomentDateModule,
     MatSliderModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    Ng5SliderModule,
     FormsModule,
 
   ],
