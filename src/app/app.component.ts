@@ -145,28 +145,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
-  getStyleSheet(unique_title) {
-    for (var i = 0; i < this.document.styleSheets.length; i++) {
-      var sheet = this.document.styleSheets[i];
-      try {
-        for (var j = 0; j < sheet.cssRules.length; j++) {
-          if ( sheet.cssRules[j].selectorText == unique_title ) {
-            return sheet.cssRules[j];
-          }
-        }
-
-      } catch (err) {
-        //console.log(err);
-
-        // обработка ошибки
-
-      }
-    }
-    return false;
-  }
-
-
   formatLabel(value: number | null) {
     if (!value) {
       return 0;
