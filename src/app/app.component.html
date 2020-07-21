@@ -51,7 +51,7 @@
           (ngModelChange)="calculate($event)"
           [vertical]="vertical">
         </mat-slider>
-        <div><span class="font-size-10">* возможно без первоначального взноса</span></div>
+        <div><!--span class="font-size-10">* возможно без первоначального взноса</span--></div>
       </mat-form-field>
       </section>
       <section>
@@ -71,7 +71,7 @@
           (ngModelChange)="calculate($event)"
           [vertical]="vertical">
         </mat-slider>
-        <div><span class="font-size-10">{{stavka_description}}</span></div>
+        <div><!--span class="font-size-10">{{stavka_description}}</span--></div>
 
       </mat-form-field>
       </section>
@@ -95,16 +95,13 @@
         </mat-slider>
       </mat-form-field>
 
-      <div class="result example-margin" *ngIf="show_credit_sum || show_overpayment">
-        <p *ngIf="show_credit_sum">Сумма кредита: {{realty_minus_down|number:'1.0-0':'ru'}} руб.</p>
-        <p *ngIf="show_overpayment">Переплата: {{overpayment|number:'1.0-0':'ru'}} руб.</p>
-        <!--div class="footer" fxLayout="row" fxLayoutAlign="center center">
-            <button mat-button color="accent" (click)="order_form()">Оформить заявку</button>
-        </div-->
+      <div fxLayout="column" fxLayoutAlign="center center" class="result example-margin" *ngIf="show_credit_sum || show_overpayment">
+        <p *ngIf="show_credit_sum">Сумма платежей: <span class="digit">{{realty_minus_down|number:'1.0-0':'ru'}}</span> руб.</p>
+        <p *ngIf="show_overpayment">Переплата: <span class="digit">{{overpayment|number:'1.0-0':'ru'}}</span> руб.</p>
+        <div>{{top_text}}</div> <span class="digit"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.
       </div>
       <div class="example-margin">
-        <div>{{top_text}}</div> от <span class="light-blue-fg font-size-32"> {{month_payment|number:'1.0-0':'ru'}} </span> руб
-        <div class="orange-fg font-size-20">{{bottom_text}}</div>
+        <button mat-button color="primary" (click)="form_submit()">Оформить заявку</button>
       </div>
     </div>
   </mat-card>

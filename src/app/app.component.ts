@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {DOCUMENT, registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import {coerceNumberProperty} from '@angular/cdk/coercion';
 registerLocaleData(localeRu, 'ru');
 
 
@@ -14,14 +15,6 @@ export class AppComponent implements OnInit {
   title = 'mortgage-calculator';
   controlPressed: boolean;
   controlProcessing: boolean;
-  key_value: any;
-  model_name: any;
-  control_name: any;
-  item_model: any[];
-  item: any[];
-
-  rows: any[];
-  records: any[];
 
   private _unsubscribeAll: Subject<any>;
 
@@ -75,10 +68,6 @@ export class AppComponent implements OnInit {
   ipoteka_order_url = "";
 
   private _tickInterval = 1;
-
-  license_check_true: boolean = false;
-  license_check_false: boolean = false;
-
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -226,8 +215,18 @@ export class AppComponent implements OnInit {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
   }
   set tickInterval(value) {
-    //this._tickInterval = coerceNumberProperty(value);
+    this._tickInterval = coerceNumberProperty(value);
   }
 
 
+  form_submit() {
+    let url_params =
+      '&cost='+this.realty_price +
+      '&down_percent='+this.down_percent +
+      '&percent='+this.percent +
+      '&realty_minus_down='+this.realty_minus_down +
+      '&vznos='+this.down_payment +
+      '&years='+this.years;
+    this.document.location = this.ipoteka_order_url + url_params;
+  }
 }

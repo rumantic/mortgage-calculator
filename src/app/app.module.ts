@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {Ng5SliderModule} from 'ng5-slider';
 import {MatCardModule} from '@angular/material/card';
+import {MatButton, MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {MatCardModule} from '@angular/material/card';
     MatSliderModule,
     MatFormFieldModule,
     MatCardModule,
+    MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
     ReactiveFormsModule,
