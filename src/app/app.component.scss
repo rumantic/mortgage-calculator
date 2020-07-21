@@ -83,6 +83,8 @@ a:hover {
 #mortgage-calculator {
   min-width: 270px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 .digit {
   font-size: 14pt;

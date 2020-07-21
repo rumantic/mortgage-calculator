@@ -95,12 +95,12 @@
         </mat-slider>
       </mat-form-field>
 
-      <div fxLayout="column" fxLayoutAlign="center center" class="result example-margin" *ngIf="show_credit_sum || show_overpayment">
+      <div class="result example-margin" *ngIf="show_credit_sum || show_overpayment">
         <p *ngIf="show_credit_sum">Сумма платежей: <span class="digit">{{realty_minus_down|number:'1.0-0':'ru'}}</span> руб.</p>
         <p *ngIf="show_overpayment">Переплата: <span class="digit">{{overpayment|number:'1.0-0':'ru'}}</span> руб.</p>
         <div>{{top_text}}</div> <span class="digit"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.
       </div>
-      <div class="example-margin">
+      <div >
         <button mat-button color="primary" (click)="form_submit()">Оформить заявку</button>
       </div>
     </div>
