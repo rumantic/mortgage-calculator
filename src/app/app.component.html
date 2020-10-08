@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div class="toolbar" role="banner" *ngIf="show_toolbar">
   <img
     width="40"
     alt="Angular Logo"
@@ -8,7 +8,7 @@
   <span>Ипотечный калькулятор</span>
 </div>
 
-<div class="content" role="main">
+<div class="content" [ngClass]="top_margin()" role="main">
   <mat-card id="mortgage-calculator">
     <div fxLayout="column" fxLayoutAlign="center center">
       <section class="example-section">
@@ -98,7 +98,7 @@
       <div class="result example-margin" *ngIf="show_credit_sum || show_overpayment">
         <p *ngIf="show_credit_sum">Сумма платежей: <span class="digit">{{realty_minus_down|number:'1.0-0':'ru'}}</span> руб.</p>
         <p *ngIf="show_overpayment">Переплата: <span class="digit">{{overpayment|number:'1.0-0':'ru'}}</span> руб.</p>
-        <div>{{top_text}}</div> <span class="digit"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.
+        <div>{{top_text}}</div> <span class="digit"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.<div>{{bottom_text}}</div>
       </div>
       <div >
         <button mat-button color="primary" (click)="form_submit()">Оформить заявку</button>

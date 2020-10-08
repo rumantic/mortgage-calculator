@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
   ipoteka_order_url = "";
 
   private _tickInterval = 1;
+  show_toolbar = true;
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -124,6 +125,11 @@ export class AppComponent implements OnInit {
     } else {
       this.show_overpayment = false;
     }
+
+    if (app_root_element.getAttribute('show_toolbar') == 0) {
+      this.show_toolbar = false;
+    }
+
 
     if (app_root_element.getAttribute('show_credit_sum') == 1) {
       this.show_credit_sum = true;
@@ -206,5 +212,11 @@ export class AppComponent implements OnInit {
       '&vznos='+this.down_payment +
       '&years='+this.years;
     this.document.location = this.ipoteka_order_url + url_params;
+  }
+
+  top_margin() {
+    if ( !this.show_toolbar ) {
+      return 'top-margin-0';
+    }
   }
 }
