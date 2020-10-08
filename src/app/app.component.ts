@@ -211,7 +211,7 @@ export class AppComponent implements OnInit {
       '&realty_minus_down='+this.realty_minus_down +
       '&vznos='+this.down_payment +
       '&years='+this.years;
-    this.document.location = this.ipoteka_order_url + url_params;
+    window.open(this.ipoteka_order_url + url_params, '_blank');
   }
 
   top_margin() {

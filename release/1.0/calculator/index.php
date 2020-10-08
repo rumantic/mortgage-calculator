@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>MortgageCalculator</title>
-  <base href="/calculator">
+  <base href="/calculator/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
@@ -26,5 +26,5 @@
   top_text="<?=$_GET['top_text']//Текст над формой?>"
   bottom_text="<?=$_GET['bottom_text']//Текст под формой?>">
 </app-root>
-<script src="runtime.e227d1a0e31cbccbf8ec.js" defer></script><script src="polyfills.a4021de53358bb0fec14.js" defer></script><script src="main.46c72e9b00ae96df68a5.js" defer></script></body>
+<script src="runtime.e227d1a0e31cbccbf8ec.js" defer></script><script src="polyfills.a4021de53358bb0fec14.js" defer></script><script src="main.1d3ced4af96e629607b7.js" defer></script></body>
 </html>
