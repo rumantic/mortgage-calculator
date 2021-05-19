@@ -100,7 +100,7 @@
         <p *ngIf="show_overpayment">Переплата: <span class="digit">{{overpayment|number:'1.0-0':'ru'}}</span> руб.</p>
         <div>{{top_text}}</div> <span class="digit"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.<div>{{bottom_text}}</div>
       </div>
-      <div >
+      <div *ngIf="show_order_button">
         <button mat-button color="primary" (click)="form_submit()">Оформить заявку</button>
       </div>
     </div>

@@ -56,6 +56,7 @@ export class AppComponent implements OnInit {
   overpayment = 0;
   show_overpayment = false;
   show_credit_sum = false;
+  show_order_button = true;
 
   credit_sum = 0;
 
@@ -128,6 +129,10 @@ export class AppComponent implements OnInit {
 
     if (app_root_element.getAttribute('show_toolbar') == 0) {
       this.show_toolbar = false;
+    }
+
+    if (app_root_element.getAttribute('hide_order_button') == 1) {
+      this.show_order_button = false;
     }
 
 
