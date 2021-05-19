@@ -91,12 +91,11 @@ export class AppComponent implements OnInit {
 
   init_input_parameters () {
     let app_root_element;
-    if (this.document.getElementById('calculator_mini_root')) {
-      app_root_element = this.document.getElementById('calculator_mini_root');
-    } else if (this.document.getElementById('calculator_root').getAttribute('realty_price') > 0) {
-      app_root_element = this.document.getElementById('calculator_root');
-    } else if (this.document.getElementById('app_root').getAttribute('realty_price') > 0) {
+    if (this.document.getElementById('app_root') ) {
       app_root_element = this.document.getElementById('app_root');
+    } else {
+      console.error('could not find app_root');
+      return;
     }
 
     if (app_root_element.getAttribute('years') > 0) {
