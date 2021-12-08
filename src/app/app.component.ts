@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   realty_price = 5500000;
   step_realty_price = 10000;
-  max_realty_price = 20000000;
+  max_realty_price = 100000000;
   min_realty_price = 10000;
 
   down_payment = 1925000;
