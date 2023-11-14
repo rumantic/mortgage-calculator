@@ -7,12 +7,23 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, MatCardModule, MatSliderModule, MatFormFieldModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    FormsModule,
+    MatCardModule,
+    MatSliderModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -158,17 +169,16 @@ export class AppComponent implements OnInit {
     }
 
   }
-
-  formatLabel(value: number) {
+  formatLabel(value: number): string {
     if (!value) {
-      return 0;
+      return '0';
     }
 
     if (value >= 1000) {
       return value / 1000000 + ' млн';
     }
 
-    return value;
+    return `${value}`;
   }
 
   formatLabelDown(value: number | null, realty_price: number | null) {

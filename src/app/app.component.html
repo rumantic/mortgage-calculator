@@ -8,19 +8,17 @@
           <span matSuffix>&nbsp;руб</span>
           <mat-slider
             class="example-margin"
+            showTickMarks discrete
             [disabled]="disabled"
-            [invert]="invert"
             [max]="max_realty_price"
             [min]="min_realty_price"
             [step]="step_realty_price"
-            [thumbLabel]="thumbLabel"
             [displayWith]="formatLabel"
-            [tickInterval]="tickInterval"
             [(ngModel)]="realty_price"
             (ngModelChange)="calculate($event)"
-            [vertical]="vertical">
+            >
+            <input matSliderThumb>
           </mat-slider>
-
         </mat-form-field>
       </section>
       <section>
@@ -30,16 +28,14 @@
           <mat-slider
             class="example-margin"
             [disabled]="disabled"
-            [invert]="invert"
             [max]="max_down_payment"
             [min]="min_down_payment"
             [step]="step_down_payment"
-            [thumbLabel]="thumbLabel"
-            [tickInterval]="tickInterval"
             [displayWith]="displayFnDown.bind(this)"
             [(ngModel)]="down_payment"
             (ngModelChange)="calculate($event)"
-            [vertical]="vertical">
+            >
+            <input matSliderThumb>
           </mat-slider>
           <div><!--span class="font-size-10">* возможно без первоначального взноса</span--></div>
         </mat-form-field>
@@ -51,15 +47,14 @@
           <mat-slider
             class="example-margin"
             [disabled]="disabled"
-            [invert]="invert"
             [max]="max_percent"
             [min]="min_percent"
             [step]="step_percent"
-            [thumbLabel]="thumbLabel"
-            [tickInterval]="tickInterval"
             [(ngModel)]="percent"
             (ngModelChange)="calculate($event)"
-            [vertical]="vertical">
+            >
+            <input matSliderThumb>
+
           </mat-slider>
           <div><!--span class="font-size-10">{{stavka_description}}</span--></div>
 
@@ -73,15 +68,13 @@
         <mat-slider
           class="example-margin"
           [disabled]="disabled"
-          [invert]="invert"
           [max]="max_years"
           [min]="min_years"
           [step]="step_years"
-          [thumbLabel]="thumbLabel"
-          [tickInterval]="tickInterval"
           [(ngModel)]="years"
           (ngModelChange)="calculate($event)"
-          [vertical]="vertical">
+          >
+          <input matSliderThumb>
         </mat-slider>
       </mat-form-field>
 
