@@ -1,8 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, inject, Inject, OnInit} from '@angular/core';
 import {CommonModule, DecimalPipe, DOCUMENT, NgClass, NgIf, registerLocaleData} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {Subject} from 'rxjs';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, FormsModule, Validators} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,6 +15,8 @@ import localeRu from '@angular/common/locales/ru';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 registerLocaleData(localeRu, 'ru');
 
 
@@ -33,18 +35,14 @@ registerLocaleData(localeRu, 'ru');
     MatInputModule,
     NgClass,
     DecimalPipe,
-    NgIf
+    NgIf,
+    MatSelectModule,
+    MatRadioModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'mortgage-calculator';
-  controlPressed: boolean;
-  controlProcessing: boolean;
-
-  private _unsubscribeAll: Subject<any>;
-
+export class AppComponent {
   autoTicks = false;
   disabled = false;
   invert = false;
@@ -87,37 +85,109 @@ export class AppComponent implements OnInit {
 
   credit_sum = 0;
 
-  stavka_title = 'Ставка % **';
-  stavka_description = '** для семей с двумя детьми и более';
+  stavka_title = "Ставка % **";
+  stavka_description = "** для семей с двумя детьми и более";
 
-  top_text = 'Ежемесячный платеж:';
-  bottom_text = 'по двум документам!';
+  top_text = "Ежемесячный платеж:";
+  bottom_text = "по двум документам!";
 
-  ipoteka_order_url = '';
+  ipoteka_order_url = "";
 
   private _tickInterval = 1;
   show_toolbar = true;
 
+
+  private fb = inject(FormBuilder);
+  addressForm = this.fb.group({
+    company: null,
+    firstName: [null, Validators.required],
+    lastName: [null, Validators.required],
+    address: [null, Validators.required],
+    address2: null,
+    city: [null, Validators.required],
+    state: [null, Validators.required],
+    postalCode: [null, Validators.compose([
+      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
+    ],
+    shipping: ['free', Validators.required]
+  });
+
+  hasUnitNumber = false;
+
+  states = [
+    {name: 'Alabama', abbreviation: 'AL'},
+    {name: 'Alaska', abbreviation: 'AK'},
+    {name: 'American Samoa', abbreviation: 'AS'},
+    {name: 'Arizona', abbreviation: 'AZ'},
+    {name: 'Arkansas', abbreviation: 'AR'},
+    {name: 'California', abbreviation: 'CA'},
+    {name: 'Colorado', abbreviation: 'CO'},
+    {name: 'Connecticut', abbreviation: 'CT'},
+    {name: 'Delaware', abbreviation: 'DE'},
+    {name: 'District Of Columbia', abbreviation: 'DC'},
+    {name: 'Federated States Of Micronesia', abbreviation: 'FM'},
+    {name: 'Florida', abbreviation: 'FL'},
+    {name: 'Georgia', abbreviation: 'GA'},
+    {name: 'Guam', abbreviation: 'GU'},
+    {name: 'Hawaii', abbreviation: 'HI'},
+    {name: 'Idaho', abbreviation: 'ID'},
+    {name: 'Illinois', abbreviation: 'IL'},
+    {name: 'Indiana', abbreviation: 'IN'},
+    {name: 'Iowa', abbreviation: 'IA'},
+    {name: 'Kansas', abbreviation: 'KS'},
+    {name: 'Kentucky', abbreviation: 'KY'},
+    {name: 'Louisiana', abbreviation: 'LA'},
+    {name: 'Maine', abbreviation: 'ME'},
+    {name: 'Marshall Islands', abbreviation: 'MH'},
+    {name: 'Maryland', abbreviation: 'MD'},
+    {name: 'Massachusetts', abbreviation: 'MA'},
+    {name: 'Michigan', abbreviation: 'MI'},
+    {name: 'Minnesota', abbreviation: 'MN'},
+    {name: 'Mississippi', abbreviation: 'MS'},
+    {name: 'Missouri', abbreviation: 'MO'},
+    {name: 'Montana', abbreviation: 'MT'},
+    {name: 'Nebraska', abbreviation: 'NE'},
+    {name: 'Nevada', abbreviation: 'NV'},
+    {name: 'New Hampshire', abbreviation: 'NH'},
+    {name: 'New Jersey', abbreviation: 'NJ'},
+    {name: 'New Mexico', abbreviation: 'NM'},
+    {name: 'New York', abbreviation: 'NY'},
+    {name: 'North Carolina', abbreviation: 'NC'},
+    {name: 'North Dakota', abbreviation: 'ND'},
+    {name: 'Northern Mariana Islands', abbreviation: 'MP'},
+    {name: 'Ohio', abbreviation: 'OH'},
+    {name: 'Oklahoma', abbreviation: 'OK'},
+    {name: 'Oregon', abbreviation: 'OR'},
+    {name: 'Palau', abbreviation: 'PW'},
+    {name: 'Pennsylvania', abbreviation: 'PA'},
+    {name: 'Puerto Rico', abbreviation: 'PR'},
+    {name: 'Rhode Island', abbreviation: 'RI'},
+    {name: 'South Carolina', abbreviation: 'SC'},
+    {name: 'South Dakota', abbreviation: 'SD'},
+    {name: 'Tennessee', abbreviation: 'TN'},
+    {name: 'Texas', abbreviation: 'TX'},
+    {name: 'Utah', abbreviation: 'UT'},
+    {name: 'Vermont', abbreviation: 'VT'},
+    {name: 'Virgin Islands', abbreviation: 'VI'},
+    {name: 'Virginia', abbreviation: 'VA'},
+    {name: 'Washington', abbreviation: 'WA'},
+    {name: 'West Virginia', abbreviation: 'WV'},
+    {name: 'Wisconsin', abbreviation: 'WI'},
+    {name: 'Wyoming', abbreviation: 'WY'}
+  ];
+
   constructor(
     @Inject(DOCUMENT) private document: any,
   ) {
-
-    // Set the private defaults
-    this._unsubscribeAll = new Subject();
-
-    this.controlPressed = false;
-    this.controlProcessing = true;
-
   }
 
   ngOnInit() {
     this.init_input_parameters();
     this.calculate(null);
   }
-
-  init_input_parameters() {
+  init_input_parameters () {
     let app_root_element;
-    if (this.document.getElementById('app_root')) {
+    if (this.document.getElementById('app_root') ) {
       app_root_element = this.document.getElementById('app_root');
     } else {
       console.error('could not find app_root');
@@ -141,7 +211,7 @@ export class AppComponent implements OnInit {
 
     if (app_root_element.getAttribute('down_percent') > 0) {
       this.down_percent = app_root_element.getAttribute('down_percent');
-      this.down_payment = this.realty_price * (app_root_element.getAttribute('down_percent') / 100);
+      this.down_payment = this.realty_price*(app_root_element.getAttribute('down_percent')/100);
     } else {
       this.down_payment = this.realty_price * 0.20;
     }
@@ -180,39 +250,40 @@ export class AppComponent implements OnInit {
     }
 
   }
-  formatLabel(value: number): string {
+
+  formatLabel(value: number | null) {
     if (!value) {
-      return '0';
+      return 0;
     }
 
     if (value >= 1000) {
       return value / 1000000 + ' млн';
     }
 
-    return `${value}`;
+    return value;
   }
 
   formatLabelDown(value: number | null, realty_price: number | null) {
     if (!value) {
       return 0;
     }
-    return (this.realty_price - value) / this.realty_price;
+    return (this.realty_price - value)/this.realty_price;
   }
 
-  displayFnDown(value: number | null) {
-    if (!value) {
+  displayFnDown (value: number | null) {
+    if (!value ) {
       value = 0;
     }
-    return 100 - Math.round((this.realty_price - value) * 100 / this.realty_price) + '%';
+    return 100-Math.round((this.realty_price - value)*100/this.realty_price) + '%';
   }
 
 
   calculate(event: null) {
     this.max_down_payment = this.realty_price;
-    if (this.down_payment > this.realty_price) {
+    if ( this.down_payment > this.realty_price ) {
       this.down_payment = this.realty_price;
     }
-    this.down_percent = 100 - Math.round((this.realty_price - this.down_payment) * 100 / this.realty_price);
+    this.down_percent = 100-Math.round((this.realty_price - this.down_payment)*100/this.realty_price);
     let start_sum = this.realty_price - this.down_payment;
     this.realty_minus_down = start_sum;
     let percent_dig = this.percent / 1200;
@@ -220,38 +291,28 @@ export class AppComponent implements OnInit {
     this.month_payment = start_sum * (percent_dig / (1 - (Math.pow(1 + percent_dig, -periods))));
     this.credit_sum = this.month_payment * periods;
     this.overpayment = this.credit_sum - start_sum;
-    if (this.percent <= 6) {
-      this.stavka_description = '** для семей с двумя детьми и более';
+    if ( this.percent <= 6 ) {
+      this.stavka_description = "** для семей с двумя детьми и более";
     } else {
-      this.stavka_description = '';
+      this.stavka_description = "";
     }
   }
 
-  get tickInterval(): number | 'auto' {
-    return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
-  }
 
-  set tickInterval(value) {
-    this._tickInterval = coerceNumberProperty(value);
+  onSubmit(): void {
+    alert('Thanks!');
   }
-
 
   form_submit() {
     let url_params =
-      '&cost=' + this.realty_price +
-      '&down_percent=' + this.down_percent +
-      '&percent=' + this.percent +
-      '&realty_minus_down=' + this.realty_minus_down +
-      '&vznos=' + this.down_payment +
-      '&years=' + this.years;
+      '&cost='+this.realty_price +
+      '&down_percent='+this.down_percent +
+      '&percent='+this.percent +
+      '&realty_minus_down='+this.realty_minus_down +
+      '&vznos='+this.down_payment +
+      '&years='+this.years;
     window.open(this.ipoteka_order_url + url_params, '_blank');
   }
 
-  top_margin() {
-    if (!this.show_toolbar) {
-      return 'top-margin-0';
-    }
-    return '';
-  }
 
 }
