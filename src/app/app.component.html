@@ -8,7 +8,6 @@
           <span matSuffix>&nbsp;руб</span>
           <mat-slider
             class="example-margin"
-            showTickMarks discrete
             [disabled]="disabled"
             [max]="max_realty_price"
             [min]="min_realty_price"
@@ -17,8 +16,8 @@
             [(ngModel)]="realty_price"
             (ngModelChange)="calculate($event)"
             >
-            <input matSliderThumb>
           </mat-slider>
+
         </mat-form-field>
       </section>
       <section>
@@ -28,14 +27,16 @@
           <mat-slider
             class="example-margin"
             [disabled]="disabled"
+
             [max]="max_down_payment"
             [min]="min_down_payment"
             [step]="step_down_payment"
+
+
             [displayWith]="displayFnDown.bind(this)"
             [(ngModel)]="down_payment"
             (ngModelChange)="calculate($event)"
             >
-            <input matSliderThumb>
           </mat-slider>
           <div><!--span class="font-size-10">* возможно без первоначального взноса</span--></div>
         </mat-form-field>
@@ -47,14 +48,15 @@
           <mat-slider
             class="example-margin"
             [disabled]="disabled"
+
             [max]="max_percent"
             [min]="min_percent"
             [step]="step_percent"
+
+
             [(ngModel)]="percent"
             (ngModelChange)="calculate($event)"
             >
-            <input matSliderThumb>
-
           </mat-slider>
           <div><!--span class="font-size-10">{{stavka_description}}</span--></div>
 
@@ -71,10 +73,10 @@
           [max]="max_years"
           [min]="min_years"
           [step]="step_years"
+
           [(ngModel)]="years"
           (ngModelChange)="calculate($event)"
           >
-          <input matSliderThumb>
         </mat-slider>
       </mat-form-field>
 

@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {CommonModule, DOCUMENT} from '@angular/common';
+import {DecimalPipe, DOCUMENT, NgClass, NgIf} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {Subject} from 'rxjs';
 import {FormsModule} from '@angular/forms';
@@ -11,18 +11,26 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 
 
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
+import {ReactiveFormsModule} from '@angular/forms';
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
+    ReactiveFormsModule,
     RouterOutlet,
     FormsModule,
     MatCardModule,
     MatSliderModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    NgClass,
+    DecimalPipe,
+    NgIf
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
