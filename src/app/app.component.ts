@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {DecimalPipe, DOCUMENT, NgClass, NgIf} from '@angular/common';
+import {CommonModule, DecimalPipe, DOCUMENT, NgClass, NgIf, registerLocaleData} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {Subject} from 'rxjs';
 import {FormsModule} from '@angular/forms';
@@ -9,17 +9,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import localeRu from '@angular/common/locales/ru';
 
 
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 import {ReactiveFormsModule} from '@angular/forms';
+registerLocaleData(localeRu, 'ru');
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     RouterOutlet,
     FormsModule,
