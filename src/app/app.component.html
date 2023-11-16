@@ -11,7 +11,7 @@
 
         <span matSuffix class="input-suffix">&nbsp; руб.</span>
         <mat-slider class="w-95" [min]="min_realty_price" [max]="max_realty_price" [step]="step_realty_price" discrete  [displayWith]="formatLabel.bind(this)">
-          <input matSliderThumb [(ngModel)]="realty_price" (ngModelChange)="calculate($event)">
+          <input class="mySlider" matSliderThumb [(ngModel)]="realty_price" (ngModelChange)="calculate($event)">
         </mat-slider>
       </mat-form-field>
       <mat-form-field class="w-100 flex-column justify-content-center">
