@@ -4,3 +4,15 @@ mat-label {
 matInput {
   font-size: 18pt;
 }
+.w-95 {
+  width: 95%;
+}
+.input-suffix {
+  padding-right: 16px;
+}
+mat-grid-tile {
+  background: lightgray;
+  flex-direction: column;
+  justify-content: start;
+  align-content: start;
+}

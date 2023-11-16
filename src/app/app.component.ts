@@ -17,6 +17,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatGridListModule} from '@angular/material/grid-list';
 registerLocaleData(localeRu, 'ru');
 
 
@@ -37,12 +38,13 @@ registerLocaleData(localeRu, 'ru');
     DecimalPipe,
     NgIf,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   autoTicks = false;
   disabled = false;
   invert = false;
@@ -70,7 +72,7 @@ export class AppComponent {
   percent = 8.5;
   step_percent = 0.1;
   max_percent = 100;
-  min_percent = 1;
+  min_percent = 0.1;
 
   years = 20;
   step_years = 1;
@@ -85,10 +87,10 @@ export class AppComponent {
 
   credit_sum = 0;
 
-  stavka_title = "Ставка % **";
+  stavka_title = "Ставка ";
   stavka_description = "** для семей с двумя детьми и более";
 
-  top_text = "Ежемесячный платеж:";
+  top_text = "Ежемесячный платеж";
   bottom_text = "по двум документам!";
 
   ipoteka_order_url = "";
@@ -99,7 +101,6 @@ export class AppComponent {
 
   private fb = inject(FormBuilder);
   addressForm = this.fb.group({
-    realty_price: null,
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
     address: [null, Validators.required],
@@ -198,7 +199,7 @@ export class AppComponent {
       this.years = app_root_element.getAttribute('years');
     }
     if (app_root_element.getAttribute('realty_price') > 0) {
-      this.realty_price = app_root_element.getAttribute('realty_price');
+      this.realty_price = parseInt(app_root_element.getAttribute('realty_price'));
     }
     if (app_root_element.getAttribute('percent') > 0) {
       this.percent = app_root_element.getAttribute('percent');
@@ -270,11 +271,12 @@ export class AppComponent {
     return (this.realty_price - value)/this.realty_price;
   }
 
-  displayFnDown (value: number | null) {
+  displayFnDown (value: number): string {
     if (!value ) {
       value = 0;
     }
-    return 100-Math.round((this.realty_price - value)*100/this.realty_price) + '%';
+    this.down_percent = 100-Math.round((this.realty_price - value)*100/this.realty_price);
+    return this.down_percent + '%';
   }
 
 
