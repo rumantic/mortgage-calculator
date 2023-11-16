@@ -1,16 +1,14 @@
   <mat-card class="shipping-card">
     <mat-card-content>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
+      <div class="flex-column">
+          <mat-form-field class="w-100 flex-column">
             <mat-label>Стоимость квартиры</mat-label>
-            <input class="input-headline" matInput placeholder="Стоимость квартиры" [ngModel]="realty_price|number:'1.0-0':'ru'" readonly>
-            <mat-slider [min]="min_realty_price" [max]="max_realty_price" [step]="step_realty_price" >
+            <input class="w-100 fs-1" matInput placeholder="Стоимость квартиры" [ngModel]="realty_price|number:'1.0-0':'ru'" readonly>
+            <mat-slider class="w-100" [min]="min_realty_price" [max]="max_realty_price" [step]="step_realty_price" >
               <input matSliderThumb [(ngModel)]="realty_price">
             </mat-slider>
 
           </mat-form-field>
-        </div>
       </div>
       <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
       <div class="row">
