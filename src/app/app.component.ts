@@ -1,4 +1,4 @@
-import {Component, inject, Inject, OnInit} from '@angular/core';
+import {Component, inject, Inject, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {CommonModule, DecimalPipe, DOCUMENT, NgClass, NgIf, registerLocaleData} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {Subject} from 'rxjs';
@@ -99,7 +99,7 @@ export class AppComponent {
 
   private fb = inject(FormBuilder);
   addressForm = this.fb.group({
-    company: null,
+    realty_price: null,
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
     address: [null, Validators.required],
