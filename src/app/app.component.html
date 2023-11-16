@@ -3,17 +3,24 @@
     <div class="flex-column">
       <mat-form-field class="w-100 flex-column justify-content-center">
         <mat-label>Стоимость недвижимости</mat-label>
-        <input class="w-100 fs-1" matInput placeholder="Стоимость недвижимости" [ngModel]="realty_price|number:'1.0-0':'ru'"
-               readonly>
+
+        <input class="w-100 fs-1" matInput placeholder="Стоимость недвижимости"
+               type="number"
+               (change)="calculate(null)"
+               [(ngModel)]="realty_price">
+
         <span matSuffix class="input-suffix">&nbsp; руб.</span>
-        <mat-slider class="w-95" [min]="min_realty_price" [max]="max_realty_price" [step]="step_realty_price">
+        <mat-slider class="w-95" [min]="min_realty_price" [max]="max_realty_price" [step]="step_realty_price" discrete  [displayWith]="formatLabel.bind(this)">
           <input matSliderThumb [(ngModel)]="realty_price" (ngModelChange)="calculate($event)">
         </mat-slider>
       </mat-form-field>
       <mat-form-field class="w-100 flex-column justify-content-center">
         <mat-label>Первоначальный взнос {{down_percent}}%</mat-label>
-        <input class="w-100 fs-1" matInput placeholder="Стоимость квартиры" [ngModel]="down_payment|number:'1.0-0':'ru'"
-               readonly>
+
+        <input class="w-100 fs-1" matInput placeholder="Стоимость квартиры"
+               (change)="calculate(null)"
+               [(ngModel)]="down_payment">
+
         <span matSuffix class="input-suffix">&nbsp; руб.</span>
         <mat-slider class="w-95" [min]="min_down_payment" [max]="max_down_payment" [step]="step_down_payment" discrete [displayWith]="displayFnDown.bind(this)">
           <input matSliderThumb [(ngModel)]="down_payment" (ngModelChange)="calculate($event)">
@@ -21,19 +28,25 @@
       </mat-form-field>
       <mat-form-field class="w-100 flex-column justify-content-center">
         <mat-label>{{stavka_title}} {{percent}}%</mat-label>
-        <input class="w-100 fs-1" type="number" matInput [placeholder]="stavka_title" [ngModel]="percent"
-               readonly>
+
+        <input class="w-100 fs-1" type="number" matInput [placeholder]="stavka_title"
+               (change)="calculate(null)"
+               [(ngModel)]="percent">
+
         <span matSuffix class="input-suffix">&nbsp; %</span>
-        <mat-slider class="w-95" [min]="min_percent" [max]="max_percent" [step]="step_percent">
+        <mat-slider class="w-95" [min]="min_percent" [max]="max_percent" [step]="step_percent" discrete>
           <input matSliderThumb [(ngModel)]="percent" (ngModelChange)="calculate($event)">
         </mat-slider>
       </mat-form-field>
       <mat-form-field class="w-100 flex-column justify-content-center">
         <mat-label>Срок кредита (лет)</mat-label>
-        <input class="w-100 fs-1" type="number" matInput placeholder="Срок кредита" [ngModel]="years"
-               readonly>
+
+        <input class="w-100 fs-1" type="number" matInput placeholder="Срок кредита"
+               (change)="calculate(null)"
+               [(ngModel)]="years">
+
         <span matSuffix class="input-suffix">&nbsp; лет</span>
-        <mat-slider class="w-95" [min]="min_years" [max]="max_years" [step]="step_years">
+        <mat-slider class="w-95" [min]="min_years" [max]="max_years" [step]="step_years" discrete>
           <input matSliderThumb [(ngModel)]="years" (ngModelChange)="calculate($event)">
         </mat-slider>
       </mat-form-field>
@@ -54,7 +67,7 @@
   </mat-card-content>
   <mat-card-actions class="flex-column">
     <div *ngIf="show_order_button">
-      <button mat-raised-button color="accent" (click)="form_submit()">Оформить заявку</button>
+      <button mat-raised-button color="accent" (click)="form_submit()">{{button_title}}</button>
     </div>
   </mat-card-actions>
 </mat-card>
