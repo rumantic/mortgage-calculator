@@ -124,6 +124,9 @@ export class AppComponent implements OnInit {
     if (app_root_element.getAttribute('realty_price') > 0) {
       this.realty_price = parseInt(app_root_element.getAttribute('realty_price'));
     }
+    if (app_root_element.getAttribute('max_realty_price') > 0) {
+      this.max_realty_price = parseInt(app_root_element.getAttribute('max_realty_price'));
+    }
     if (app_root_element.getAttribute('percent') > 0) {
       this.percent = app_root_element.getAttribute('percent');
     }
