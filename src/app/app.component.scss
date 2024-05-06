@@ -19,7 +19,7 @@ mat-grid-tile {
   height: 50px;
   top: -62px;
   right: -25px;
-  background-color: #fb4582;
+  background-color: #778f5d;
   opacity: 1;
   text-align: center;
   display: flex;
@@ -28,5 +28,80 @@ mat-grid-tile {
 }
 
 :host ::ng-deep  .mat-mdc-slider .mdc-slider__value-indicator::before {
-  border-top-color: #fb4582;
+  border-top-color: #778f5d;
+}
+
+.my-color {
+  .mat-mdc-raised-button {
+    background-color: #778f5d;
+  }
+  --mdc-slider-handle-color: #778f5d;
+  --mdc-slider-focus-handle-color: #778f5d;
+  --mdc-slider-hover-handle-color: #778f5d;
+  --mdc-slider-active-track-color: #778f5d;
+  --mdc-slider-inactive-track-color: #778f5d;
+  --mdc-slider-with-tick-marks-inactive-container-color: #778f5d;
+  --mdc-slider-with-tick-marks-active-container-color: white;
+  --mdc-slider-disabled-active-track-color: #000;
+  --mdc-slider-disabled-handle-color: #000;
+  --mdc-slider-disabled-inactive-track-color: #000;
+  --mdc-slider-label-container-color: #000;
+  --mdc-slider-label-label-text-color: #fff;
+  --mdc-slider-with-overlap-handle-outline-color: #fff;
+  --mdc-slider-with-tick-marks-disabled-container-color: #000;
+  --mdc-slider-handle-elevation: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+  0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  --mat-mdc-slider-ripple-color: #778f5d;
+  --mat-mdc-slider-hover-ripple-color: rgba(255, 64, 129, 0.05);
+  --mat-mdc-slider-focus-ripple-color: rgba(255, 64, 129, 0.2);
+  --mat-slider-value-indicator-opacity: 0.6;
+
+  --mdc-filled-text-field-caret-color: #778f5d;
+  --mdc-filled-text-field-focus-active-indicator-color: #778f5d;
+  --mdc-filled-text-field-focus-label-text-color: #778f5d;
+  --mdc-filled-text-field-container-color: whitesmoke;
+  --mdc-filled-text-field-disabled-container-color: #fafafa;
+  --mdc-filled-text-field-label-text-color: rgba(0, 0, 0, 0.6);
+  --mdc-filled-text-field-disabled-label-text-color: rgba(0, 0, 0, 0.38);
+  --mdc-filled-text-field-input-text-color: rgba(0, 0, 0, 0.87);
+  --mdc-filled-text-field-disabled-input-text-color: rgba(0, 0, 0, 0.38);
+  --mdc-filled-text-field-input-text-placeholder-color: rgba(0, 0, 0, 0.6);
+  --mdc-filled-text-field-error-focus-label-text-color: #f44336;
+  --mdc-filled-text-field-error-label-text-color: #f44336;
+  --mdc-filled-text-field-error-caret-color: #f44336;
+  --mdc-filled-text-field-active-indicator-color: rgba(0, 0, 0, 0.42);
+  --mdc-filled-text-field-disabled-active-indicator-color: rgba(0, 0, 0, 0.06);
+  --mdc-filled-text-field-hover-active-indicator-color: rgba(0, 0, 0, 0.87);
+  --mdc-filled-text-field-error-active-indicator-color: #f44336;
+  --mdc-filled-text-field-error-focus-active-indicator-color: #f44336;
+  --mdc-filled-text-field-error-hover-active-indicator-color: #f44336;
+  --mdc-outlined-text-field-caret-color: #778f5d;
+  --mdc-outlined-text-field-focus-outline-color: #778f5d;
+  --mdc-outlined-text-field-focus-label-text-color: #778f5d;
+  --mdc-outlined-text-field-label-text-color: rgba(0, 0, 0, 0.6);
+  --mdc-outlined-text-field-disabled-label-text-color: rgba(0, 0, 0, 0.38);
+  --mdc-outlined-text-field-input-text-color: rgba(0, 0, 0, 0.87);
+  --mdc-outlined-text-field-disabled-input-text-color: rgba(0, 0, 0, 0.38);
+  --mdc-outlined-text-field-input-text-placeholder-color: rgba(0, 0, 0, 0.6);
+  --mdc-outlined-text-field-error-caret-color: #f44336;
+  --mdc-outlined-text-field-error-focus-label-text-color: #f44336;
+  --mdc-outlined-text-field-error-label-text-color: #f44336;
+  --mdc-outlined-text-field-outline-color: rgba(0, 0, 0, 0.38);
+  --mdc-outlined-text-field-disabled-outline-color: rgba(0, 0, 0, 0.06);
+  --mdc-outlined-text-field-hover-outline-color: rgba(0, 0, 0, 0.87);
+  --mdc-outlined-text-field-error-focus-outline-color: #f44336;
+  --mdc-outlined-text-field-error-hover-outline-color: #f44336;
+  --mdc-outlined-text-field-error-outline-color: #f44336;
+  --mat-form-field-focus-select-arrow-color: #778f5d;
+  --mat-form-field-disabled-input-text-placeholder-color: rgba(0, 0, 0, 0.38);
+  --mat-form-field-state-layer-color: rgba(0, 0, 0, 0.87);
+  --mat-form-field-error-text-color: #f44336;
+  --mat-form-field-select-option-text-color: inherit;
+  --mat-form-field-select-disabled-option-text-color: GrayText;
+  --mat-form-field-enabled-select-arrow-color: rgba(0, 0, 0, 0.54);
+  --mat-form-field-disabled-select-arrow-color: rgba(0, 0, 0, 0.38);
+  --mat-form-field-hover-state-layer-opacity: 0.04;
+  --mat-form-field-focus-state-layer-opacity: 0.12;
+
 }

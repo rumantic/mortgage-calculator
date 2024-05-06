@@ -1,4 +1,4 @@
-<mat-card class="shipping-card">
+<mat-card class="shipping-card my-color">
   <mat-card-content>
     <div class="flex-column">
       <mat-form-field class="w-100 flex-column justify-content-center">
@@ -52,16 +52,13 @@
       </mat-form-field>
 
 
-      <div class="result example-margin" *ngIf="show_credit_sum || show_overpayment">
-
-        <mat-grid-list cols="2" rowHeight="2:1">
-          <mat-grid-tile class="justify-content-start"><p *ngIf="show_credit_sum">Сумма кредита<br> <span class="fw-bold">{{realty_minus_down|number:'1.0-0':'ru'}}</span> руб.</p></mat-grid-tile>
-          <mat-grid-tile class="justify-content-start"><p>{{top_text}}<br><span class="fw-bold"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.</p></mat-grid-tile>
-          <mat-grid-tile class="justify-content-start"><p *ngIf="show_overpayment">Переплата<br> <span class="fw-bold">{{overpayment|number:'1.0-0':'ru'}}</span> руб.</p></mat-grid-tile>
-          <mat-grid-tile class="justify-content-start"><p>Процентная ставка<br> <span class="fw-bold">{{percent}}</span> %</p></mat-grid-tile>
-        </mat-grid-list>
-
-
+      <div class="result p-0 m-0" *ngIf="show_credit_sum || show_overpayment">
+        <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-between p-0 m-0">
+          <div class="text-center bg-light p-4 m-2" *ngIf="show_credit_sum">Сумма кредита<br> <span class="fw-bold">{{realty_minus_down|number:'1.0-0':'ru'}}</span> руб.</div>
+          <div class="text-center bg-light p-4 m-2">{{top_text}}<br><span class="fw-bold"> {{month_payment|number:'1.0-0':'ru'}} </span> руб.</div>
+          <div class="text-center bg-light p-4 m-2" *ngIf="show_overpayment">Переплата<br> <span class="fw-bold">{{overpayment|number:'1.0-0':'ru'}}</span> руб.</div>
+          <div class="text-center bg-light p-4 m-2">Процентная ставка<br> <span class="fw-bold">{{percent}}</span> %</div>
+        </div>
       </div>
     </div>
   </mat-card-content>
