@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
 
   percent = 8.5;
   step_percent = 0.1;
-  max_percent = 100;
+  max_percent = 25;
   min_percent = 0.1;
 
   years = 20;
@@ -129,6 +129,9 @@ export class AppComponent implements OnInit {
     }
     if (app_root_element.getAttribute('percent') > 0) {
       this.percent = app_root_element.getAttribute('percent');
+    }
+    if (app_root_element.getAttribute('max_percent') > 0) {
+      this.max_percent = app_root_element.getAttribute('max_percent');
     }
     if (app_root_element.getAttribute('down_payment') > 0) {
       this.down_payment = app_root_element.getAttribute('down_payment');
