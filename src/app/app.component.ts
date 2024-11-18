@@ -236,6 +236,20 @@ export class AppComponent implements OnInit {
   }
 
   form_submit() {
+
+    let url_parts = this.ipoteka_order_url.split('#');
+    let first_part = url_parts[0];
+    let hash_part = url_parts[1];
+    if ( !first_part.includes('?') ) {
+      first_part = first_part + '?';
+    }
+
+    if ( hash_part !== undefined ) {
+      hash_part = '#' + hash_part;
+    } else {
+      hash_part = '';
+    }
+
     let url_params =
       '&cost='+this.realty_price +
       '&down_percent='+this.down_percent +
@@ -243,7 +257,9 @@ export class AppComponent implements OnInit {
       '&realty_minus_down='+this.realty_minus_down +
       '&vznos='+this.down_payment +
       '&years='+this.years;
-    window.open(this.ipoteka_order_url + url_params, '_blank');
+
+
+    window.open(first_part + url_params +  hash_part, '_blank');
   }
 
 
