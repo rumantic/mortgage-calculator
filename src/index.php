@@ -23,6 +23,7 @@ $version = 3;
   ipoteka_order_url="<?=$_GET['ipoteka_order_url']//URL для кнопки оформления заявки?>"
   years="<?=$_GET['years']//Срок кредита в годах?>"
   realty_price="<?=$_GET['realty_price']//Стоимость недвижимости?>"
+  max_realty_price="<?=$_GET['max_realty_price']//Стоимость недвижимости?>"
   down_percent="<?=$_GET['down_percent']//Первоначальный взнос в процентах?>"
   percent="<?=$_GET['percent']//Ставка по кредиту в процентах?>"
   show_overpayment="<?=$_GET['show_overpayment']//Показывать в результатах сумму переплаты?>"
